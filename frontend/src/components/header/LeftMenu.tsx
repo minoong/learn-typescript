@@ -8,6 +8,7 @@ import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import { createStyles, ListItem, ListItemIcon, ListItemText, makeStyles, Theme } from '@material-ui/core';
 import clsx from 'clsx';
+import Toolbar from '@material-ui/core/Toolbar';
 
 type LeftMenuPorps = {
   open: boolean;
@@ -16,7 +17,7 @@ type LeftMenuPorps = {
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme: Theme) => {
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) => {
     drawerPaper: {
       position: 'relative',
       whiteSpace: 'nowrap',
-      width: '500px',
+      width: drawerWidth,
       transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
@@ -48,13 +49,16 @@ const useStyles = makeStyles((theme: Theme) => {
         width: theme.spacing(9),
       },
     },
-  });
-});
+  }),
+);
 
 const LeftMenu: React.FC<LeftMenuPorps> = ({ open, handleDrawerClose }) => {
   console.log(open);
-  const classes: any = useStyles();
+  const classes = useStyles();
+  console.log(classes);
   return (
+    // <div className={classes.root}>
+    //   <CssBaseline />
     <Drawer
       variant="permanent"
       classes={{
@@ -76,10 +80,35 @@ const LeftMenu: React.FC<LeftMenuPorps> = ({ open, handleDrawerClose }) => {
             </ListItemIcon>
             <ListItemText primary="Dashboard" />
           </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <DashboardIcon />
+            </ListItemIcon>
+            <ListItemText primary="Dashboard" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <DashboardIcon />
+            </ListItemIcon>
+            <ListItemText primary="Dashboard" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <DashboardIcon />
+            </ListItemIcon>
+            <ListItemText primary="Dashboard" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <DashboardIcon />
+            </ListItemIcon>
+            <ListItemText primary="Dashboard" />
+          </ListItem>
         </div>
       </List>
       <Divider />
     </Drawer>
+    // </div>
   );
 };
 
